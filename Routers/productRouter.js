@@ -1,13 +1,17 @@
 const express =require('express')
 const expressAsyncHandler =require('express-async-handler');
 const data =require('../data.js');
-const Product =require('../Models/ProductModel.js');
+const Product =require('../Models/ProductModel');
 
 const productRouter = express.Router();
 
 productRouter.get('/',expressAsyncHandler(async(req,res)=>{
     const products = await Product.find({});
-    res.send(products);
+    if (products) {
+        console.log("OK");
+        res.send(products);
+    }else { console.log("Product not loaded..");}
+    
 })
 );
 

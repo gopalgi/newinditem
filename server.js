@@ -15,7 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //const DB=mongodb+srv://GopalDubey:buchchi@2907@cluster0.uvfww.mongodb.net/INDiTem?retryWrites=true&w=majority
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/INDiTem',{
+//mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/INDiTem',{
+    mongoose.connect('mongodb+srv://GopalDubey:buchchi@2907@cluster0.uvfww.mongodb.net/INDiTem?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useUnifiedTopology:true,
     useCreateIndex:true,
@@ -37,9 +38,9 @@ app.use((err,req,res,next) =>{
     res.status(500).send({message: err.message});
 });
 
-if(process.env.NODE_ENV == "production"){
-    app.use(express.static("forntend/build"))
-}
+//if(process.env.NODE_ENV == "production"){
+  //  app.use(express.static("forntend/build"))
+//}
 const port = process.env.port || 5000;
 app.listen(port, () => {
     console.log(`Service at http://localhost:${port}`);
